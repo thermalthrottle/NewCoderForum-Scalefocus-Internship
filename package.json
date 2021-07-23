@@ -1,0 +1,32 @@
+{
+  "name": "newcoderforum",
+  "version": "0.0.1",
+  "description": "Forum created for new coders",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thermalthrottle/NewCoderForum-Scalefocus-Internship.git"
+  },
+  "keywords": [
+    "code",
+    "forum",
+    "newprogrammer"
+  ],
+  "author": "Dimitar Todorov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thermalthrottle/NewCoderForum-Scalefocus-Internship/issues"
+  },
+  "homepage": "https://github.com/thermalthrottle/NewCoderForum-Scalefocus-Internship#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.13.3",
+    "nodemon": "^2.0.12"
+  }
+}
