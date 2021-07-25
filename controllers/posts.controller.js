@@ -1,5 +1,7 @@
+//outside modules
 import mongoose from 'mongoose';
 
+//entities
 import Posts from '../db/posts.js';
 
 export const getAllPosts = async (req, res) => {

@@ -1,5 +1,9 @@
+//outside modules
 import express from 'express';
+
+//controllers
 import {  getAllPosts, getPostByID, addPost, updatePost, deletePost } from '../controllers/posts.controller.js';
+import {} from '../controllers/users.controller.js';
 
 const router = express.Router();
 
