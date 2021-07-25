@@ -16,8 +16,8 @@ export const getPostByID = async (req, res) => {
     try {
         const post = await Posts.find({_id});
         res.status(200).json(post);
-    } catch ({message}) {
-        res.status(400).json({message});
+    } catch ({error}) {
+        res.status(400).json({error});
     }
 }
 
@@ -27,7 +27,32 @@ export const addPost = async (req, res) => {
     try {
         await newPost.save();  
         res.status(201).json(newPost);
-    } catch ({message}) {
-        res.status(400).json({message});
+    } catch ({error}) {
+        res.status(400).json({error});
+    }
+}
+
+export const updatePost = async (req, res) => {
+    const {_id} = mongoose.Types.ObjectId(req.params._id);
+    const updatedPost = req.body;
+
+    if (Object.keys(req.body).length === 0) {
+        res.status(400).json({"message": "The body is empty!"});
+    }
+    try {
+        const postUpdate = await Posts.updateOne({_id}, updatedPost);
+        res.status(200).json("Updated successfully!");    
+    } catch ({error}) {
+        res.status(400).json({error});
+    }
+}
+
+export const deletePost = async (req, res) => {
+    const {_id} = mongoose.Types.ObjectId(req.params._id);
+    try {
+        await Posts.deleteOne({_id});
+        res.status(200).json({"message": "Post deleted successfully"})
+    } catch ({error}) {
+        res.status(400).json({error})
     }
 }
