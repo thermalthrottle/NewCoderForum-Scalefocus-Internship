@@ -26,3 +26,4 @@ mongoose.connect('mongodb://localhost:27017/NewCoderForum', {useNewUrlParser: tr
         console.log("Server currently listening on port " + port);
         app.listen(port);
     });
+
