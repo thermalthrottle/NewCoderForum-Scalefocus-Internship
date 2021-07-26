@@ -4,12 +4,15 @@ import mongoose from 'mongoose';
 //entities
 import Posts from '../db/posts.js';
 
+//services
+import PostService from '../services/post.service.js';
+
 export const getAllPosts = async (req, res) => {
     try {
-        const allPosts = await Posts.find();
+        const allPosts = await PostService.getAllPosts();
         res.status(200).json(allPosts);
     } catch (error) {
-        res.status(404).json( {message: "Uh oh, error"} );
+        res.status(404).json(error);
     }
 }
       
@@ -27,10 +30,13 @@ export const addPost = async (req, res) => {
     const {title, text} = req.body;
     const newPost = new Posts({title, text});
     try {
-        await newPost.save();  
-        res.status(201).json(newPost);
-    } catch ({error}) {
-        res.status(400).json({error});
+        console.log("here");
+        const postToReturn = await PostService.savePost(newPost);
+        res.status(201).json(postToReturn);
+    } catch (error) {
+        
+        console.log("catch");
+        res.status(400).json(error);
     }
 }
 
