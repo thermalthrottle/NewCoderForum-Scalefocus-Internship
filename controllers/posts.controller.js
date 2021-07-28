@@ -5,7 +5,7 @@ import mongoose from 'mongoose';
 import Posts from '../db/posts.js';
 
 //services
-import PostService from '../services/post.service.js';
+import PostService from '../services/posts.service.js';
 
 export const getAllPosts = async (req, res) => {
     try {
@@ -30,7 +30,6 @@ export const addPost = async (req, res) => {
     const {title, text} = req.body;
     const newPost = new Posts({title, text});
     try {
-        console.log("here");
         const postToReturn = await PostService.savePost(newPost);
         res.status(201).json(postToReturn);
     } catch (error) {
@@ -48,8 +47,8 @@ export const updatePost = async (req, res) => {
         res.status(400).json({"message": "The body is empty!"});
     }
     try {
-        const postUpdate = await Posts.updateOne({_id}, updatedPost);
-        res.status(200).json("Updated successfully!");    
+        await Posts.updateOne({_id}, updatedPost);
+        res.status(200).json({"message":"Updated successfully!"});    
     } catch ({error}) {
         res.status(400).json({error});
     }

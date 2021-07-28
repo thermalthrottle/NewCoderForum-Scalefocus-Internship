@@ -1,5 +1,3 @@
-import mongoose from 'mongoose';
-
 import Posts from '../db/posts.js';
 
 export default class postService{
