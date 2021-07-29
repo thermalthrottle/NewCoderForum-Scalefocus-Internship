@@ -21,14 +21,16 @@ export default class userService{
         _id = mongoose.Types.ObjectId(_id);
         return await User.find({_id});
     }
-    static findUserByUsername = async (username) => {
-        const user = User.findOne({username});
-        return await user;
+
+    static findUserByUsernameORPassword = async (username, email) => {
+        return await User.findOne({$or : [{username}, {email}]});;
     }
 
-    static updateUser = async (_id ,updatedUserBody) => {
+    static updateUser = async (_id, updatedUser) => {
         _id = mongoose.Types.ObjectId(_id);
-        return await User.updateOne({_id}, updatedUserBody);
+        const salt = await bcrypt.genSalt(12);
+        updatedUser.password = await bcrypt.hash(updatedUser.password, salt);
+        return await User.updateOne({_id}, updatedUser);
     }
 
     static deleteUser = async (id) => {

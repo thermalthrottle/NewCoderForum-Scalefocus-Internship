@@ -3,7 +3,7 @@ import express from 'express';
 
 //controllers
 import {  getAllPosts, getPostByID, addPost, updatePost, deletePost } from '../controllers/posts.controller.js';
-import { register, login, updateUser, deleteUser, AuthenticateToken } from '../controllers/users.controller.js';
+import { register, login, getUserByID, updateUser, deleteUser, AuthenticateToken } from '../controllers/users.controller.js';
 
 const router = express.Router();
 
@@ -21,10 +21,11 @@ router.post('/register', register);
 
 router.get('/login', login);
 
-// router.get('/getUserByID/:_id')
+router.get('/getUserByID/:_id', getUserByID)
 
 router.patch('/updateUser/:_id', AuthenticateToken, updateUser);
 
 router.delete('/deleteUser/:_id', AuthenticateToken, deleteUser);
+
 
 export default router;
