@@ -1,4 +1,4 @@
-import mongoose from mongoose;
+import mongoose from 'mongoose';
 
 import Comments from '../db/comments.js';
 
@@ -22,13 +22,14 @@ export default class commentService {
     }
 
     static saveComment = async (title, text, postAttached, author) => {
-        const commentToSave = new Comments({tite, text, postAttached, author})
+        const commentToSave = new Comments({title, text, postAttached, author})
         return await commentToSave.save();
     }
 
-    static updateComment = async (postID, updatedCommentBody) => {
-        const _id = mongoose.Types.ObjectId(postID);
-        return await Comments.updateOne({_id}, updatedCommentBody);
+    static updateComment = async (commentID, title, text) => {
+        const _id = mongoose.Types.ObjectId(commentID);
+        console.log(title);
+        return await Comments.updateOne({_id}, {title, text});
     }
 
     static deleteComment = async (id) => {

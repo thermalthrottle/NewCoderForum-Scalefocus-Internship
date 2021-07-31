@@ -30,14 +30,14 @@ router.delete('/deleteUser/:_id', AuthenticateToken, deleteUser);
 
 router.get('/comments/:_id', getCommentByID);
 
-router.post('/comments/addComment/:postID/:_id'. AuthenticateToken, addComment);
+router.post('/addComment/:postID', AuthenticateToken, addComment);
 
-router.get('/comments/getCommentsByPostID/:postID/', getCommentsByPostID);
+router.get('/getCommentsByPostID/:postID/', getCommentsByPostID);
 
-router.get('/comments/getCommentsByAuthorID/:authorID', getCommentsByAuthorID);
+router.get('/getCommentsByAuthorID/:authorID', getCommentsByAuthorID);
 
-router.patch('/comments/updateComment/:_id', AuthenticateToken, updateComment);
+router.patch('/updateComment/:_id', AuthenticateToken, updateComment);
 
-router.delete('/comments/deleteComment/:_id', AuthenticateToken, deleteComment);
+router.delete('/deleteComment/:_id', AuthenticateToken, deleteComment);
 
 export default router;
